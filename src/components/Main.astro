@@ -1,0 +1,80 @@
+---
+import json from "../data.json";
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const today = new Date();
+const currentDay = days[today.getDay() - 1];
+---
+
+<main class='p-4 md:p-8 bg-Very-pale-orange mt-4 md:mt-8 rounded-lg shadow'>
+  <p class='text-Dark-brown text-2xl font-bold'>Spending - Last 7 days</p>
+  <div class='flex justify-between items-end w-full mt-9 mb-4'>
+    {
+      json.map((item) => (
+        <div>
+          <div
+            class='chart w-10 md:w-14  bg-Soft-red rounded-[5px] mb-2 relative'
+            style={`--height:${item.amount * 3}px`}
+            data-amount={item.amount}
+            data-day={item.day}
+            data-active={item.day === currentDay ? "true" : "false"}
+          >
+            <span class='absolute amount text-Very-pale-orange text-xs px-3 py-1 flex justify-center items-center w-[120%] bg-Dark-brown rounded-md -top-5 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+              ${item.amount}
+            </span>
+          </div>
+          <div class='flex justify-center text-Medium-brown text-xs'>
+            {item.day}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class='bg-Cream w-full h-0.5 mb-4 md:mb-8'></div>
+  <div>
+    <p class='text-Medium-brown'>Total this month</p>
+    <div class='flex justify-between items-center'>
+      <p class='font-bold text-4xl text-Dark-brown'>$478.33</p>
+      <div class='flex flex-col'>
+        <span class='font-bold amount text-Dark-brown self-end'>+2.4%</span>
+        <p class='text-Medium-brown'>from last month</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script is:inline define:vars={{ currentDay }}></script>
+
+<style>
+  .chart {
+    height: 0;
+    transition: height 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .chart[data-amount] {
+    height: var(--height);
+  }
+
+  .chart[data-amount="0"] {
+    background-color: transparent;
+  }
+
+  .chart[data-active="true"] {
+    background-color: var(--color-Cyan);
+  }
+  .amount {
+    transition: transform 0.3s ease-in-out;
+  }
+  .chart[data-active="false"] > .amount {
+    transform: scale(0);
+  }
+  .chart[data-active="true"] > .amount {
+    transform: scale(1);
+  }
+  .chart:hover {
+    filter: brightness(1.2);
+  }
+  .chart:hover > .amount {
+    transform: scale(1);
+  }
+</style>

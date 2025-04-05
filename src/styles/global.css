@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-Soft-red: hsl(10, 79%, 65%);
+  --color-Cyan: hsl(186, 34%, 60%);
+  --color-Dark-brown: hsl(25, 47%, 15%);
+  --color-Medium-brown: hsl(28, 10%, 53%);
+  --color-Cream: hsl(27, 66%, 92%);
+  --color-Very-pale-orange: hsl(33, 100%, 98%);
+}
+
+:root {
+  --color-Soft-red: hsl(10, 79%, 65%);
+  --color-Cyan: hsl(186, 34%, 60%);
+  --color-Dark-brown: hsl(25, 47%, 15%);
+  --color-Medium-brown: hsl(28, 10%, 53%);
+  --color-Cream: hsl(27, 66%, 92%);
+  --color-Very-pale-orange: hsl(33, 100%, 98%);
+}
