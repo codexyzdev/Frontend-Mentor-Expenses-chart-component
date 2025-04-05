@@ -10,9 +10,9 @@ const currentDay = days[today.getDay() - 1];
   <div class='flex justify-between gap-2 items-end w-full mt-9 mb-4'>
     {
       json.map((item) => (
-        <div class='grow'>
+        <div class='w-full'>
           <div
-            class='chart   bg-Soft-red rounded-[5px] mb-2 relative'
+            class='chart bg-Soft-red rounded-[5px] mb-2 relative'
             style={`--height:${item.amount * 3}px`}
             data-amount={item.amount}
             data-day={item.day}
