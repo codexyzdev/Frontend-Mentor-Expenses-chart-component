@@ -47,7 +47,9 @@ const currentDay = days[today.getDay() - 1];
 <style>
   .chart {
     height: 0;
-    transition: height 0.3s ease-in-out;
+    transition:
+      height 0.3s ease-in-out,
+      filter 0.3s ease-in-out;
     cursor: pointer;
   }
 
@@ -69,7 +71,7 @@ const currentDay = days[today.getDay() - 1];
     transform: scale(0);
   }
   .chart[data-active="true"] > .amount {
-    transform: scale(1);
+    transform: scale(0);
   }
   .chart:hover {
     filter: brightness(1.2);
